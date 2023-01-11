@@ -1,10 +1,4 @@
-export interface Animal {
-  name: string;
-  species: string;
-  description: string;
-  thumbnail: string;
-  image: string;
-}
+import type { Animal } from '@nx-animals/shared-types';
 
 export const animals: Animal[] = [
   {

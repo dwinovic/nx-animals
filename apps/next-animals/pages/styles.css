@@ -92,43 +92,29 @@ pre {
   margin-bottom: 0.5rem;
 }
 #hero {
-  align-items: center;
   background-color: hsla(214, 62%, 21%, 1);
-  border: none;
   box-sizing: border-box;
   color: rgba(55, 65, 81, 1);
-  display: grid;
-  grid-template-columns: 1fr;
-  margin-top: 3.5rem;
+  margin-top: 2rem;
 }
 #hero .text-container {
   color: rgba(255, 255, 255, 1);
-  padding: 3rem 2rem;
+  padding: 2rem 2rem;
 }
-#hero .text-container h2 {
-  font-size: 1.5rem;
-  line-height: 2rem;
-  position: relative;
-}
-#hero .text-container h2 svg {
-  color: hsla(162, 47%, 50%, 1);
-  height: 2rem;
-  left: -0.25rem;
-  position: absolute;
-  top: 0;
-  width: 2rem;
-}
-#hero .text-container h2 span {
-  margin-left: 2.5rem;
-}
-#hero .text-container a {
+
+#hero .text-container input {
   background-color: rgba(255, 255, 255, 1);
   border-radius: 0.75rem;
   color: rgba(55, 65, 81, 1);
   display: inline-block;
-  margin-top: 1.5rem;
-  padding: 1rem 2rem;
+  margin-top: 1rem;
+  padding: 1rem;
   text-decoration: inherit;
+  width: 100%;
+}
+
+#hero .text-container input:focus {
+  outline-color: hsla(162, 47%, 50%, 1);
 }
 #hero .logo-container {
   display: none;
@@ -394,7 +380,7 @@ summary svg {
   #hero .logo-container {
     display: flex;
   }
-  #middle-content {
+  /* #middle-content {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+  } */
 }
