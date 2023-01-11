@@ -1,8 +1,19 @@
-import { Injectable } from '@nestjs/common';
-
+import { Injectable, Query } from '@nestjs/common';
+import { Animal, animals } from '../animals';
 @Injectable()
 export class AppService {
   getData(): { message: string } {
     return { message: 'Welcome to animals!' };
+  }
+
+  getAnimals(): Animal[] {
+    return animals;
+  }
+
+  searchAnimal(query): Animal[] {
+    const keyword = (query.q as string).toLocaleLowerCase();
+    return animals.filter(
+      ({ name }) => name.toLocaleLowerCase().includes(keyword) ?? ''
+    );
   }
 }
