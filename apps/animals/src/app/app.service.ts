@@ -1,5 +1,6 @@
 import { Injectable, Query } from '@nestjs/common';
-import { Animal, animals } from '../animals';
+import { Animal } from '@nx-animals/shared-types';
+import { animals } from '../animals';
 @Injectable()
 export class AppService {
   getData(): { message: string } {
