@@ -1,5 +1,5 @@
 import { Controller, Get, Query } from '@nestjs/common';
-import { Animal } from '../animals';
+import { Animal } from '@nx-animals/shared-types';
 
 import { AppService } from './app.service';
 

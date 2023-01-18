@@ -1,20 +1,27 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import type { Animal } from '@nx-animals/shared-types';
+import axios from 'axios';
 
 const StyledPage = styled.div`
   .page {
   }
 `;
 
-export function Index() {
-  const [search, setSearch] = useState('');
-  const [animals, setAnimal] = useState<Animal[]>([]);
+export function Index({
+  q,
+  animals: intialAnimals,
+}: {
+  q: string;
+  animals: Animal[];
+}) {
+  const [search, setSearch] = useState(q);
+  const [animals, setAnimal] = useState<any[]>(intialAnimals);
 
   useEffect(() => {
-    fetch(`http://localhost:3333/api/search?q=${search}`)
-      .then((res) => res.json())
-      .then((result) => setAnimal(result));
+    axios(`http://localhost:3333/api/search?q=${search}`).then((res) =>
+      setAnimal(res.data)
+    );
   }, [search]);
 
   const handleSearchInput = useCallback(
@@ -41,6 +48,7 @@ export function Index() {
               <input
                 onChange={handleSearchInput}
                 placeholder="Search name of animal here!"
+                defaultValue={search}
               />
             </div>
           </div>
@@ -94,3 +102,20 @@ export function Index() {
 }
 
 export default Index;
+
+export async function getServerSideProps(context) {
+  let animals = [];
+  if (context.query.q) {
+    const res = await fetch(
+      `http://localhost:3333/api/search?q=${context.query.q}`
+    );
+    animals = await res.json();
+  }
+
+  return {
+    props: {
+      q: context.query.q ?? '',
+      animals,
+    },
+  };
+}
