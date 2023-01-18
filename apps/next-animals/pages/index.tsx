@@ -57,25 +57,9 @@ export function Index({
             <div id="learning-materials" className="rounded shadow">
               <h2>List of animals</h2>
               {animals.map((animal, index) => (
-                <div key={index} className="list-item-link">
-                  <span>
-                    {animal.name}
-                    <span>{animal.species}</span>
-                  </span>
-                  {/* <svg
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg> */}
-                </div>
+                <li key={index} className="list-item-link">
+                  {animal.name}
+                </li>
               ))}
             </div>
           </div>

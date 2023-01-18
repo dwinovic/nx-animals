@@ -3,11 +3,10 @@ import { getGreeting } from '../support/app.po';
 describe('next-animals', () => {
   beforeEach(() => cy.visit('/'));
 
-  it('should display welcome message', () => {
-    // Custom command example, see `../support/commands.ts` file
-    cy.login('my-email@something.com', 'myPassword');
+  it('should display root page', () => {
+    cy.get('input').first().type('Monkey');
+    cy.get('li').first().should('have.text', 'Monkey');
 
-    // Function helper example, see `../support/app.po.ts` file
-    getGreeting().contains('Welcome next-animals');
+    cy.get('body').screenshot();
   });
 });
